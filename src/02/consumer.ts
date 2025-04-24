@@ -9,16 +9,17 @@ async function consume() {
   const queue = "hello";
 
   await channel.assertQueue(queue);
-  console.log(`Waiting for messages in queue [${queue}]...`);
+  console.log(`\n\nWaiting for messages in queue [${queue}]...`);
 
-  channel.consume(queue, read, { noAck: true });
+  channel.consume(queue, read, { noAck: false });
 }
 
 function read(message: ConsumeMessage | null) {
   if(message) {
     const content = message.content.toString();
-    console.log(`Received message: ${content}`);
-    // channel.ack(message);
+    console.log(`\nReceived message: ${content}`);
+    console.log(`Message properties: ${JSON.stringify(message.properties)}`);
+    channel.ack(message);
   }
 }
 

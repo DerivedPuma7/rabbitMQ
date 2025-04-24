@@ -9,9 +9,13 @@ async function produce() {
     const message = { message: "Hello World!" };
 
     await channel.assertQueue(queue); // cria a fila se ainda não existir
-    channel.sendToQueue(queue, Buffer.from(JSON.stringify(message)));
+    channel.sendToQueue(
+      queue, 
+      Buffer.from(JSON.stringify(message)),
+      { contentType: 'application/json' }
+    );
 
-    console.log(`Message sent to queue [${queue}]: [${message}]`);
+    console.log(`\n\nMessage sent to queue [${queue}]: [${JSON.stringify(message)}]`);
   } catch (error) {
     console.log("error", error);
   } finally {
