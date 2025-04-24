@@ -1,0 +1,31 @@
+{
+  "name": "rabbitmq",
+  "version": "1.0.0",
+  "description": "study rabbitmq ",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "connect": "ts-node src/01/connection.ts",
+    "produce": "ts-node src/02/producer.ts",
+    "consume": "ts-node src/02/consumer.ts",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DerivedPuma7/rabbitMQ.git"
+  },
+  "author": "gustavo figueiredo",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DerivedPuma7/rabbitMQ/issues"
+  },
+  "homepage": "https://github.com/DerivedPuma7/rabbitMQ#readme",
+  "dependencies": {
+    "@types/amqplib": "^0.10.7",
+    "@types/node": "^22.14.1",
+    "amqplib": "^0.10.7",
+    "nodemon": "^3.1.10",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.8.3"
+  }
+}
