@@ -7,15 +7,22 @@ async function produce() {
     const queue = "hello";
 
     const message = { message: "Hello World!" };
-
     await channel.assertQueue(queue);
-    channel.sendToQueue(
-      queue, 
-      Buffer.from(JSON.stringify(message)),
-      { contentType: 'application/json' }
+    const messages = new Array(100000).fill(message).map((message, index) => {
+      return { ...message, index };
+    })
+    ;
+    await Promise.all(
+      messages.map((message) => {
+        return channel.sendToQueue(
+          queue, 
+          Buffer.from(JSON.stringify(message)),
+          { contentType: 'application/json' }
+        );
+      })
     );
+    console.log(`\n\nSent [${messages.length}] messages to queue [${queue}]`);
 
-    console.log(`\n\nMessage sent to queue [${queue}]: [${JSON.stringify(message)}]`);
   } catch (error) {
     console.log("error", error);
   } finally {
