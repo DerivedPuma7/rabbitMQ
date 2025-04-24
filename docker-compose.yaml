@@ -1,0 +1,10 @@
+services:
+  rabbit:
+    container_name: "rabbitmq"
+    image: "rabbitmq:4.1.0-management"
+    environment:
+      RABBITMQ_DEFAULT_USER: "rabbitmq"
+      RABBITMQ_DEFAULT_PASS: "rabbitmq"
+    ports:
+      - "5672:5672" # rabbitmq
+      - "15672:15672" # rabbitmq management
