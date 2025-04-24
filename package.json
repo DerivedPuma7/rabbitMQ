@@ -8,6 +8,8 @@
     "connect": "ts-node src/01/connection.ts",
     "produce": "ts-node src/02/producer.ts",
     "consume": "ts-node src/02/consumer.ts",
+    "produceFanout": "ts-node src/03/producerFanout.ts",
+    "consumeFanout": "ts-node src/03/consumer1.ts & ts-node src/03/consumer2.ts & ts-node src/03/consumer3.ts",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
