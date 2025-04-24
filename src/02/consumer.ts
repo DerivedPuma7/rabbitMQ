@@ -19,6 +19,9 @@ function read(message: ConsumeMessage | null) {
     const content = message.content.toString();
     console.log(`\nReceived message: ${content}`);
     console.log(`Message properties: ${JSON.stringify(message.properties)}`);
+    
+    // const requeue = true;
+    // channel.nack(message, false, requeue);
     channel.ack(message);
   }
 }
